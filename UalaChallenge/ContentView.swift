@@ -18,7 +18,7 @@ struct ContentView: View {
                 Button(action: {
                     selectedCity = city
                 }, label: {
-                    CityCellView(city: city)
+                    CityCellView(city: city, favoriteAction: { viewModel.setFavoriteCity(city) })
                 })
             }
             if let selectedCity = selectedCity {
@@ -39,7 +39,7 @@ struct ContentView: View {
             NavigationLink {
                 CityDetailView(city: city)
             } label: {
-                CityCellView(city: city)
+                CityCellView(city: city, favoriteAction: { viewModel.setFavoriteCity(city) })
             }
         }
     }

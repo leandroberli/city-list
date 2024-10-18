@@ -11,6 +11,7 @@ import Combine
 public final class CityListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let citiesService: CitiesServiceProtocol
+    private var favoriteCitiesRepository: FavoriteCitiesRepository = FavoriteCitiesRepository()
     private var apiAlreadyFetched: Bool = false
     @Published var cities: [City] = []
     
@@ -27,8 +28,20 @@ public final class CityListViewModel: ObservableObject {
             .sink(receiveCompletion: { data in
                 
             }, receiveValue: {[weak self] data in
-                self?.cities = self?.sortCities(data) ?? data
+                var cities: [City] = []
+                for item in data {
+                    cities.append(City(country: item.country, name: item.name, _id: item._id, coord: item.coord, favorite: self?.favoriteCitiesRepository.isFavorite(city: item)))
+                }
+                self?.cities = self?.sortCities(cities) ?? data
+                
             }).store(in: &cancellables)
+    }
+    
+    func setFavoriteCity(_ city: City) {
+        if let index = cities.firstIndex(where: { $0._id == city._id }) {
+            cities[index].favorite = !favoriteCitiesRepository.isFavorite(city: city)
+            favoriteCitiesRepository.setFavorite(city: city, isFavorite: !favoriteCitiesRepository.isFavorite(city: city))
+        }
     }
     
     private func sortCities(_ cities: [City]) -> [City] {

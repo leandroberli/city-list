@@ -12,6 +12,7 @@ public struct City: Codable {
     let name: String
     let _id: Int
     let coord: Coordinates
+    var favorite: Bool? = false
 }
 
 extension City: Hashable {

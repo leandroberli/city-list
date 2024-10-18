@@ -8,7 +8,6 @@
 import SwiftUI
 
 public struct CityListView<Content: View>: View {
-    //Chequear viewModel. Es necesario pasar el objeto ?
     private var cities: [City]
     @State private var searchText: String = ""
     @State private var searchIsActive = false
@@ -24,7 +23,10 @@ public struct CityListView<Content: View>: View {
         if searchText.isEmpty {
             return cities
         } else {
-            return cities.filter { $0.name.contains(searchText) }
+            return cities.filter {
+                let lowercased = $0.name.lowercased()
+                return lowercased.contains(searchText.lowercased())
+            }
         }
     }
     
