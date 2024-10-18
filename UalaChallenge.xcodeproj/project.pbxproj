@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A211ABF2CC0112C009BFA4E /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A211ABE2CC0112C009BFA4E /* CityModel.swift */; };
+		9A211AC12CC011D4009BFA4E /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A211AC02CC011D4009BFA4E /* CityListViewModel.swift */; };
+		9A211AC52CC01642009BFA4E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A211AC42CC01642009BFA4E /* Endpoint.swift */; };
 		9ACA02342CC00BBD008F92F1 /* UalaChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA02332CC00BBD008F92F1 /* UalaChallengeApp.swift */; };
 		9ACA02362CC00BBD008F92F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA02352CC00BBD008F92F1 /* ContentView.swift */; };
 		9ACA02382CC00BC1008F92F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACA02372CC00BC1008F92F1 /* Assets.xcassets */; };
@@ -14,6 +17,12 @@
 		9ACA02452CC00BC1008F92F1 /* UalaChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA02442CC00BC1008F92F1 /* UalaChallengeTests.swift */; };
 		9ACA024F2CC00BC1008F92F1 /* UalaChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA024E2CC00BC1008F92F1 /* UalaChallengeUITests.swift */; };
 		9ACA02512CC00BC1008F92F1 /* UalaChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA02502CC00BC1008F92F1 /* UalaChallengeUITestsLaunchTests.swift */; };
+		9AE4D8B52CC0214B00EAC4D8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8B42CC0214800EAC4D8 /* APIClient.swift */; };
+		9AE4D8B82CC0219800EAC4D8 /* CitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8B72CC0219400EAC4D8 /* CitiesService.swift */; };
+		9AE4D8BC2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */; };
+		9AE4D8BE2CC17A1600EAC4D8 /* CityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8BD2CC17A0F00EAC4D8 /* CityDetailView.swift */; };
+		9AE4D8C02CC19A6E00EAC4D8 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8BF2CC19A6400EAC4D8 /* CityListView.swift */; };
+		9AE4D8C32CC2578800EAC4D8 /* CustomSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A211ABE2CC0112C009BFA4E /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		9A211AC02CC011D4009BFA4E /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
+		9A211AC42CC01642009BFA4E /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		9ACA02302CC00BBD008F92F1 /* UalaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UalaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACA02332CC00BBD008F92F1 /* UalaChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UalaChallengeApp.swift; sourceTree = "<group>"; };
 		9ACA02352CC00BBD008F92F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +56,12 @@
 		9ACA024A2CC00BC1008F92F1 /* UalaChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UalaChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACA024E2CC00BC1008F92F1 /* UalaChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UalaChallengeUITests.swift; sourceTree = "<group>"; };
 		9ACA02502CC00BC1008F92F1 /* UalaChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UalaChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9AE4D8B42CC0214800EAC4D8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		9AE4D8B72CC0219400EAC4D8 /* CitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesService.swift; sourceTree = "<group>"; };
+		9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
+		9AE4D8BD2CC17A0F00EAC4D8 /* CityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailView.swift; sourceTree = "<group>"; };
+		9AE4D8BF2CC19A6400EAC4D8 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
+		9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +89,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A211AC22CC015F8009BFA4E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A211ABE2CC0112C009BFA4E /* CityModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9A211AC32CC01631009BFA4E /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				9A211AC42CC01642009BFA4E /* Endpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
 		9ACA02272CC00BBD008F92F1 = {
 			isa = PBXGroup;
 			children = (
@@ -94,7 +128,16 @@
 		9ACA02322CC00BBD008F92F1 /* UalaChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */,
+				9AE4D8C12CC19B5900EAC4D8 /* CityDetail */,
+				9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */,
+				9AE4D8B62CC0218400EAC4D8 /* CitiesService */,
+				9AE4D8B12CC0210D00EAC4D8 /* APIClient */,
+				9A211AC32CC01631009BFA4E /* Endpoint */,
+				9A211AC22CC015F8009BFA4E /* Models */,
 				9ACA02332CC00BBD008F92F1 /* UalaChallengeApp.swift */,
+				9AE4D8BF2CC19A6400EAC4D8 /* CityListView.swift */,
+				9A211AC02CC011D4009BFA4E /* CityListViewModel.swift */,
 				9ACA02352CC00BBD008F92F1 /* ContentView.swift */,
 				9ACA02372CC00BC1008F92F1 /* Assets.xcassets */,
 				9ACA02392CC00BC1008F92F1 /* Preview Content */,
@@ -125,6 +168,30 @@
 				9ACA02502CC00BC1008F92F1 /* UalaChallengeUITestsLaunchTests.swift */,
 			);
 			path = UalaChallengeUITests;
+			sourceTree = "<group>";
+		};
+		9AE4D8B12CC0210D00EAC4D8 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				9AE4D8B42CC0214800EAC4D8 /* APIClient.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		9AE4D8B62CC0218400EAC4D8 /* CitiesService */ = {
+			isa = PBXGroup;
+			children = (
+				9AE4D8B72CC0219400EAC4D8 /* CitiesService.swift */,
+			);
+			path = CitiesService;
+			sourceTree = "<group>";
+		};
+		9AE4D8C12CC19B5900EAC4D8 /* CityDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9AE4D8BD2CC17A0F00EAC4D8 /* CityDetailView.swift */,
+			);
+			path = CityDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +325,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACA02362CC00BBD008F92F1 /* ContentView.swift in Sources */,
+				9AE4D8C02CC19A6E00EAC4D8 /* CityListView.swift in Sources */,
+				9AE4D8BE2CC17A1600EAC4D8 /* CityDetailView.swift in Sources */,
 				9ACA02342CC00BBD008F92F1 /* UalaChallengeApp.swift in Sources */,
+				9AE4D8BC2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift in Sources */,
+				9A211ABF2CC0112C009BFA4E /* CityModel.swift in Sources */,
+				9A211AC12CC011D4009BFA4E /* CityListViewModel.swift in Sources */,
+				9AE4D8C32CC2578800EAC4D8 /* CustomSplitView.swift in Sources */,
+				9A211AC52CC01642009BFA4E /* Endpoint.swift in Sources */,
+				9AE4D8B52CC0214B00EAC4D8 /* APIClient.swift in Sources */,
+				9AE4D8B82CC0219800EAC4D8 /* CitiesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +506,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,7 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = DataAndAlg.UalaChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -459,6 +536,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,7 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = DataAndAlg.UalaChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

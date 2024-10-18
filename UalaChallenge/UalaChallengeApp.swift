@@ -12,6 +12,10 @@ struct UalaChallengeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    print("OnAppear: UalaChallengeApp")
+                }
         }
+        
     }
 }
