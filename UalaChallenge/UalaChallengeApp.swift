@@ -16,6 +16,5 @@ struct UalaChallengeApp: App {
                     print("OnAppear: UalaChallengeApp")
                 }
         }
-        
     }
 }

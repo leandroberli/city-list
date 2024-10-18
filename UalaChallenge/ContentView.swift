@@ -14,10 +14,12 @@ struct ContentView: View {
     
     var body: some View {
         CustomSplitView(landscapeView: {
-            CityListView(viewModel: viewModel) { city in
+            CityListView(cities: viewModel.cities) { city in
                 Button(action: {
                     selectedCity = city
-                }, label: {Text(city.name)})
+                }, label: {
+                    CityCellView(city: city)
+                })
             }
             if let selectedCity = selectedCity {
                 CityDetailView(city: selectedCity)
@@ -33,11 +35,11 @@ struct ContentView: View {
     }
     
     var portraitView: some View {
-        CityListView(viewModel: viewModel) { city in
+        CityListView(cities: viewModel.cities) { city in
             NavigationLink {
                 CityDetailView(city: city)
             } label: {
-                Text(city.name + ", " + city.country)
+                CityCellView(city: city)
             }
         }
     }

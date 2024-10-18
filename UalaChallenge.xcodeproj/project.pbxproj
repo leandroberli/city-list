@@ -23,6 +23,7 @@
 		9AE4D8BE2CC17A1600EAC4D8 /* CityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8BD2CC17A0F00EAC4D8 /* CityDetailView.swift */; };
 		9AE4D8C02CC19A6E00EAC4D8 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8BF2CC19A6400EAC4D8 /* CityListView.swift */; };
 		9AE4D8C32CC2578800EAC4D8 /* CustomSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */; };
+		9AE4D8C72CC270E000EAC4D8 /* CityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C62CC270E000EAC4D8 /* CityCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		9AE4D8BD2CC17A0F00EAC4D8 /* CityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailView.swift; sourceTree = "<group>"; };
 		9AE4D8BF2CC19A6400EAC4D8 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
 		9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitView.swift; sourceTree = "<group>"; };
+		9AE4D8C62CC270E000EAC4D8 /* CityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 		9ACA02322CC00BBD008F92F1 /* UalaChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				9AE4D8C62CC270E000EAC4D8 /* CityCellView.swift */,
 				9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */,
 				9AE4D8C12CC19B5900EAC4D8 /* CityDetail */,
 				9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */,
@@ -329,6 +332,7 @@
 				9AE4D8BE2CC17A1600EAC4D8 /* CityDetailView.swift in Sources */,
 				9ACA02342CC00BBD008F92F1 /* UalaChallengeApp.swift in Sources */,
 				9AE4D8BC2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift in Sources */,
+				9AE4D8C72CC270E000EAC4D8 /* CityCellView.swift in Sources */,
 				9A211ABF2CC0112C009BFA4E /* CityModel.swift in Sources */,
 				9A211AC12CC011D4009BFA4E /* CityListViewModel.swift in Sources */,
 				9AE4D8C32CC2578800EAC4D8 /* CustomSplitView.swift in Sources */,
