@@ -11,36 +11,43 @@ import MapKit
 struct ContentView: View {
     @StateObject var viewModel = CityListViewModel(citiesService: CitiesService())
     @State private var selectedCity: City?
+    @State private var showDetails: Bool = false
     
     var body: some View {
-        CustomSplitView(landscapeView: {
-            CityListView(cities: viewModel.cities) { city in
-                Button(action: {
-                    selectedCity = city
-                }, label: {
-                    CityCellView(city: city, favoriteAction: { viewModel.setFavoriteCity(city) })
-                })
+        NavigationStack {
+            VStack(alignment: .leading) {
+                ScrollView {
+                    Picker("Select a city", selection: $viewModel.selectedListType) {
+                        ForEach(ListType.allCases, id: \.self) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.leading)
+                    .padding(.trailing)
+                    LazyVStack(alignment: .leading, spacing: 8) {
+                        ForEach(viewModel.getCities()) { city in
+                            CityCellView(city: city, favoriteAction: {
+                                viewModel.setFavoriteCity(city)
+                            }, didSelectAction: {
+                                selectedCity = city
+                                showDetails = true
+                            })
+                        }
+                    }
+                    .padding()
+                    .navigationDestination(isPresented: $showDetails) {
+                        if let selectedCity = selectedCity {
+                            CityDetailView(city: selectedCity)
+                        }
+                    }
+                }
             }
-            if let selectedCity = selectedCity {
-                CityDetailView(city: selectedCity)
-            } else {
-                EmptyView()
-            }
-        }, portrait: {
-            portraitView
-        })
+            .navigationTitle("Cities")
+        }
+        .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive)
         .onAppear {
             viewModel.fetchCities()
-        }
-    }
-    
-    var portraitView: some View {
-        CityListView(cities: viewModel.cities) { city in
-            NavigationLink {
-                CityDetailView(city: city)
-            } label: {
-                CityCellView(city: city, favoriteAction: { viewModel.setFavoriteCity(city) })
-            }
         }
     }
 }

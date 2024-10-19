@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct CityListView<Content: View>: View {
-    private var cities: [City]
+        private var cities: [City]
     @State private var searchText: String = ""
     @State private var searchIsActive = false
     @ViewBuilder var listItem: (City) -> Content

@@ -8,12 +8,22 @@
 import Foundation
 import Combine
 
+public enum ListType: String, CaseIterable {
+    case all = "Explore"
+    case favs = "Likes"
+}
+
 public final class CityListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let citiesService: CitiesServiceProtocol
     private var favoriteCitiesRepository: FavoriteCitiesRepository = FavoriteCitiesRepository()
     private var apiAlreadyFetched: Bool = false
     @Published var cities: [City] = []
+    
+    @Published var searchText: String = ""
+    @Published var searchIsActive = false
+    
+    @Published var selectedListType: ListType = .all
     
     init(citiesService: CitiesServiceProtocol) {
         self.citiesService = citiesService
@@ -41,6 +51,26 @@ public final class CityListViewModel: ObservableObject {
         if let index = cities.firstIndex(where: { $0._id == city._id }) {
             cities[index].favorite = !favoriteCitiesRepository.isFavorite(city: city)
             favoriteCitiesRepository.setFavorite(city: city, isFavorite: !favoriteCitiesRepository.isFavorite(city: city))
+        }
+    }
+    
+    func getCities() -> [City] {
+        if searchText.isEmpty {
+            if selectedListType == .all {
+                return cities
+            } else {
+                return cities.filter({ $0.favorite ?? false })
+            }
+        } else {
+            let cities = cities.filter {
+                let lowercased = $0.name.lowercased()
+                return lowercased.contains(searchText.lowercased())
+            }
+            if selectedListType == .all {
+                return cities
+            } else {
+                return cities.filter({ $0.favorite ?? false })
+            }
         }
     }
     

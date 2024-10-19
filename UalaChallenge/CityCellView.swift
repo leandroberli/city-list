@@ -10,19 +10,26 @@ import SwiftUI
 struct CityCellView: View {
     var city: City
     var favoriteAction: () -> Void
+    var didSelectAction: () -> Void
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(city.name + ", " + city.country)
-                Text("\(city.coord.lat)" + ", " + "\(city.coord.lon)")
+        Button(action: {
+            didSelectAction()
+        }, label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(city.name + ", " + city.country).font(.system(size: 16, weight: .regular))
+                    Text("\(city.coord.lat)" + ", " + "\(city.coord.lon)").font(.system(size: 12, weight: .light))
+                }
+                Spacer()
+                Button(action: {
+                    favoriteAction()
+                }, label: {
+                    city.favorite ?? false ? Image(systemName: "heart.fill").tint(.red) : Image(systemName: "heart").tint(.red)
+                })
+                .buttonStyle(.plain)
             }
-            Button(action: {
-                favoriteAction()
-            }, label: {
-                city.favorite ?? false ? Image(systemName: "heart.fill") : Image(systemName: "heart")
-            })
-            .buttonStyle(.plain)
-        }
+        })
+        .tint(.primary)
     }
 }
