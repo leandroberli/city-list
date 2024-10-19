@@ -12,12 +12,13 @@ struct ContentView: View {
     @StateObject var viewModel = CityListViewModel(citiesService: CitiesService())
     @State private var selectedCity: City?
     @State private var showDetails: Bool = false
+    @State private var orientation = UIDeviceOrientation.unknown
     
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
+        HStack(spacing: 0) {
+            NavigationStack {
                 ScrollView {
-                    Picker("Select a city", selection: $viewModel.selectedListType) {
+                    Picker("Select a city list", selection: $viewModel.selectedListType) {
                         ForEach(ListType.allCases, id: \.self) {
                             Text($0.rawValue)
                         }
@@ -31,7 +32,7 @@ struct ContentView: View {
                                 viewModel.setFavoriteCity(city)
                             }, didSelectAction: {
                                 selectedCity = city
-                                showDetails = true
+                                showDetails = orientation.isLandscape ? false : true
                             })
                         }
                     }
@@ -42,12 +43,24 @@ struct ContentView: View {
                         }
                     }
                 }
+                .navigationTitle("Cities")
+                .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive)
             }
-            .navigationTitle("Cities")
+            .frame(maxWidth: orientation.isLandscape ? UIScreen.main.bounds.size.width/3 : .infinity)
+            if orientation.isLandscape {
+                Color.secondary.frame(width: 1).opacity(0.5)
+                if let selectedCity = selectedCity {
+                    CityDetailView(city: selectedCity)
+                } else {
+                    Spacer()
+                }
+            }
         }
-        .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive)
         .onAppear {
             viewModel.fetchCities()
+        }
+        .onRotate { orientation in
+            self.orientation = orientation
         }
     }
 }
