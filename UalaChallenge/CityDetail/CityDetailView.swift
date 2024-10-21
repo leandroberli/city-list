@@ -27,11 +27,30 @@ public struct CityDetailView: View {
             })
             .padding()
             .sheet(isPresented: $showingSheet) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Country: " + viewModel.city.country)
-                    Text("Name: " + viewModel.city.name)
-                    Text("latitude: \(viewModel.city.coord.lon)")
-                    Text("longitude: \(viewModel.city.coord.lat)")
+                ZStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Country: " + viewModel.city.country)
+                        Text("Name: " + viewModel.city.name)
+                        Text("latitude: \(viewModel.city.coord.lon)")
+                        Text("longitude: \(viewModel.city.coord.lat)")
+                    }
+                    .padding()
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                showingSheet = false
+                            }) {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.black)
+                                    .padding()
+                                    .background(Color.white)
+                                    .clipShape(Circle())
+                            }
+                            .padding()
+                        }
+                        Spacer()
+                    }
                 }
             }
         }

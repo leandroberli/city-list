@@ -61,6 +61,10 @@ struct CityListView: View {
         }
         .onRotate { orientation in
             self.orientation = orientation
+            //Fix bug: avoid repeated map view when you are in map detail protrait mode and then go to landscape mode
+            if orientation.isLandscape {
+                showDetails = false
+            }
         }
     }
 }
