@@ -116,6 +116,8 @@
 		9ACA02272CC00BBD008F92F1 = {
 			isa = PBXGroup;
 			children = (
+				9AE4D8D22CC6A61900EAC4D8 /* README.md */,
+				9AE4D8D02CC6A5F400EAC4D8 /* Mobile Challenge - v0.5.pdf */,
 				9ACA02322CC00BBD008F92F1 /* UalaChallenge */,
 				9ACA02432CC00BC1008F92F1 /* UalaChallengeTests */,
 				9ACA024D2CC00BC1008F92F1 /* UalaChallengeUITests */,
@@ -136,8 +138,6 @@
 		9ACA02322CC00BBD008F92F1 /* UalaChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				9AE4D8D22CC6A61900EAC4D8 /* README.md */,
-				9AE4D8D02CC6A5F400EAC4D8 /* Mobile Challenge - v0.5.pdf */,
 				9AE4D8CD2CC67FFB00EAC4D8 /* FavoriteCitiesRepository */,
 				9AE4D8CC2CC67FAE00EAC4D8 /* CityCell */,
 				9AE4D8C12CC19B5900EAC4D8 /* CityDetail */,
