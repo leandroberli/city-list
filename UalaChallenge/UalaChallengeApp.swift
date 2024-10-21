@@ -12,9 +12,6 @@ struct UalaChallengeApp: App {
     var body: some Scene {
         WindowGroup {
             CityListView()
-                .onAppear {
-                    print("OnAppear: UalaChallengeApp")
-                }
         }
     }
 }

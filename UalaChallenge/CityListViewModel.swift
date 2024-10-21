@@ -77,10 +77,6 @@ public final class CityListViewModel: ObservableObject {
     }
     
     private func sortCities(_ cities: [City]) -> [City] {
-        let date1 = Date()
-        print(#function)
-        let sorted = cities.sorted(by: { $0.name < $1.name })
-        print(Date().timeIntervalSince1970 - date1.timeIntervalSince1970)
-        return sorted
+        return cities.sorted(by: { $0.name < $1.name })
     }
 }
