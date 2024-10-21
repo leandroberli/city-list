@@ -57,7 +57,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            viewModel.fetchCities()
+            viewModel.fetchCities() { }
         }
         .onRotate { orientation in
             self.orientation = orientation

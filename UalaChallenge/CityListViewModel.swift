@@ -29,7 +29,7 @@ public final class CityListViewModel: ObservableObject {
         self.citiesService = citiesService
     }
     
-    func fetchCities() {
+    func fetchCities(completion: @escaping (() -> Void)) {
         guard !apiAlreadyFetched else { return }
         self.apiAlreadyFetched = true
         
@@ -43,6 +43,7 @@ public final class CityListViewModel: ObservableObject {
                     cities.append(City(country: item.country, name: item.name, _id: item._id, coord: item.coord, favorite: self?.favoriteCitiesRepository.isFavorite(city: item)))
                 }
                 self?.cities = self?.sortCities(cities) ?? data
+                completion()
                 
             }).store(in: &cancellables)
     }
@@ -55,6 +56,7 @@ public final class CityListViewModel: ObservableObject {
     }
     
     func getCities() -> [City] {
+        print(cities)
         if searchText.isEmpty {
             if selectedListType == .all {
                 return cities

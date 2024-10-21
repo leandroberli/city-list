@@ -39,35 +39,93 @@ final class CityListViewModelTests: XCTestCase {
         viewModel = nil
     }
     
-    func testGetCitiesAndSortArrayCorrectly() throws {
-        viewModel.fetchCities()
+    func testGetAllCitiesAndSortArrayCorrectly() throws {
+        let expectation = self.expectation(description: "Fetching cities")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            let cities = self.viewModel.getCities()
-            
-            let expectedResult = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
-                                  City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0)),
-                                  City(country: "ES", name: "Madrid", _id: 2, coord: Coordinates(lon: 0, lat: 0)),
-                                  City(country: "BR", name: "Rio de Janeiro", _id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false)]
-            
-            XCTAssertEqual(cities, expectedResult)
+        viewModel.fetchCities {
+            expectation.fulfill()
         }
+        viewModel.searchText = ""
+        
+        waitForExpectations(timeout: 5) { error in
+            if error != nil {
+                XCTFail("Failed to fetch cities in time")
+            }
+        }
+        
+        let cities = self.viewModel.getCities()
+        
+        let expectedResult = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
+                              City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0)),
+                              City(country: "ES", name: "Madrid", _id: 2, coord: Coordinates(lon: 0, lat: 0)),
+                              City(country: "BR", name: "Rio de Janeiro", _id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false)]
+        
+        XCTAssertEqual(cities, expectedResult)
     }
     
-    func testGetCitiesAndSortArrayResultWrong() throws {
-        viewModel.fetchCities()
+    func testGetAllCitiesAndSortArrayResultWrong() throws {
+        let expectation = self.expectation(description: "Fetching cities")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            let cities = self.viewModel.getCities()
-            let wrongResult = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
-                               City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0)),
-                               City(country: "BR", name: "Rio de Janeiro", _id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false),
-                               City(country: "ES", name: "Madrid", _id: 2, coord: Coordinates(lon: 0, lat: 0))]
-            
-            XCTAssertNotEqual(cities, wrongResult)
+        viewModel.fetchCities {
+            expectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 5) { error in
+            if error != nil {
+                XCTFail("Failed to fetch cities in time")
+            }
+        }
+        
+        let cities = self.viewModel.getCities()
+        let wrongResult = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
+                           City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0)),
+                           City(country: "BR", name: "Rio de Janeiro", _id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false),
+                           City(country: "ES", name: "Madrid", _id: 2, coord: Coordinates(lon: 0, lat: 0))]
+        
+        XCTAssertNotEqual(cities, wrongResult)
     }
 
+    func testSearchCitiesWithSearchStringB() throws {
+        let expectation = self.expectation(description: "Fetching cities")
+        
+        viewModel.fetchCities {
+            expectation.fulfill()
+        }
+        
+        viewModel.searchText = "B"
+        
+        waitForExpectations(timeout: 5) { error in
+            if error != nil {
+                XCTFail("Failed to fetch cities in time")
+            }
+        }
+        
+        let cities = self.viewModel.getCities()
+        let result = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
+                           City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0))]
+        
+        XCTAssertEqual(cities, result)
+    }
+    
+    func testSearchCitiesWithSearchStringBuenos() throws {
+        let expectation = self.expectation(description: "Fetching cities")
+        
+        viewModel.fetchCities {
+            expectation.fulfill()
+        }
+        viewModel.searchText = "buenos"
+        
+        waitForExpectations(timeout: 5) { error in
+            if error != nil {
+                XCTFail("Failed to fetch cities in time")
+            }
+        }
+        
+        let cities = self.viewModel.getCities()
+        let result: [City] = [City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0))]
+        
+        XCTAssertEqual(cities, result)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
