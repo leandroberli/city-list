@@ -10,16 +10,31 @@ import MapKit
 
 public struct CityDetailView: View {
     @ObservedObject var viewModel: CityDetailViewModel
+    @State private var showingSheet = false
     
     public init(city: City) {
         self.viewModel = CityDetailViewModel(city: city)
     }
     
     public var body: some View {
-        Map(position: $viewModel.region) {
-            Marker(viewModel.city.name, coordinate: CLLocationCoordinate2D(latitude:  Double(viewModel.city.coord.lat), longitude:  Double(viewModel.city.coord.lon)))
-        }
+        VStack {
+            Map(position: $viewModel.region) {
+                Marker(viewModel.city.name, coordinate: CLLocationCoordinate2D(latitude:  Double(viewModel.city.coord.lat), longitude:  Double(viewModel.city.coord.lon)))
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Button(action: { showingSheet.toggle() }, label: {
+                Text("See city information")
+            })
+            .padding()
+            .sheet(isPresented: $showingSheet) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Country: " + viewModel.city.country)
+                    Text("Name: " + viewModel.city.name)
+                    Text("latitude: \(viewModel.city.coord.lon)")
+                    Text("longitude: \(viewModel.city.coord.lat)")
+                }
+            }
+        }
     }
 }
 
