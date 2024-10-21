@@ -39,7 +39,7 @@ final class CityListViewModelTests: XCTestCase {
         viewModel = nil
     }
     
-    func testGetAllCitiesAndSortArrayCorrectly() throws {
+    func testGetAllCitiesAndSortArray() throws {
         let expectation = self.expectation(description: "Fetching cities")
         
         viewModel.fetchCities {
@@ -63,7 +63,7 @@ final class CityListViewModelTests: XCTestCase {
         XCTAssertEqual(cities, expectedResult)
     }
     
-    func testGetAllCitiesAndSortArrayResultWrong() throws {
+    func testGetAllCitiesAndWrongSortArrayResult() throws {
         let expectation = self.expectation(description: "Fetching cities")
         
         viewModel.fetchCities {
@@ -85,7 +85,7 @@ final class CityListViewModelTests: XCTestCase {
         XCTAssertNotEqual(cities, wrongResult)
     }
 
-    func testSearchCitiesWithSearchStringB() throws {
+    func testSearchCitiesWithValidSearchStringAndResults() throws {
         let expectation = self.expectation(description: "Fetching cities")
         
         viewModel.fetchCities {
@@ -107,7 +107,7 @@ final class CityListViewModelTests: XCTestCase {
         XCTAssertEqual(cities, result)
     }
     
-    func testSearchCitiesWithSearchStringBuenos() throws {
+    func testSearchCitiesWithValidSearchStringAndOneResult() throws {
         let expectation = self.expectation(description: "Fetching cities")
         
         viewModel.fetchCities {
@@ -127,7 +127,7 @@ final class CityListViewModelTests: XCTestCase {
         XCTAssertEqual(cities, result)
     }
     
-    func testSearchCitiesWithSearchStringInvalid() throws {
+    func testSearchCitiesWithInvalidSearchString() throws {
         let expectation = self.expectation(description: "Fetching cities")
         
         viewModel.fetchCities {

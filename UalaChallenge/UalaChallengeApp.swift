@@ -11,7 +11,7 @@ import SwiftUI
 struct UalaChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CityListView()
                 .onAppear {
                     print("OnAppear: UalaChallengeApp")
                 }

@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct ContentView: View {
+struct CityListView: View {
     @StateObject var viewModel = CityListViewModel(citiesService: CitiesService(), favoriteCitiesRepository: FavoriteCitiesRepository())
     @State private var selectedCity: City?
     @State private var showDetails: Bool = false
@@ -66,5 +66,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    CityListView()
 }
