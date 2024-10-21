@@ -19,10 +19,8 @@ public final class CityListViewModel: ObservableObject {
     private var favoriteCitiesRepository: FavoriteCitiesRepositoryProtocol
     private var apiAlreadyFetched: Bool = false
     @Published var cities: [City] = []
-    
     @Published var searchText: String = ""
     @Published var searchIsActive = false
-    
     @Published var selectedListType: ListType = .all
     
     init(citiesService: CitiesServiceProtocol,
@@ -62,6 +60,7 @@ public final class CityListViewModel: ObservableObject {
         }
     }
     
+    //TODO: Try to improve this operations using concurrency GCD
     func getCities() -> [City] {
         var filteredCities = cities
         
