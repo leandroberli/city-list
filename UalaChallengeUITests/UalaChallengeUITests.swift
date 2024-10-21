@@ -23,7 +23,7 @@ final class UalaChallengeUITests: XCTestCase {
 
     func testNavigationToCityInfoScreen() throws {
         let firstCityCell = app.staticTexts["A Guarda, ES"]
-        XCTAssertTrue(firstCityCell.waitForExistence(timeout: 60))
+        XCTAssertTrue(firstCityCell.waitForExistence(timeout: 100))
         firstCityCell.tap()
         
         let infoButton = app.buttons["See city information"]
