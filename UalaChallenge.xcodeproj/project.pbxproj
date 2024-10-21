@@ -25,6 +25,7 @@
 		9AE4D8C32CC2578800EAC4D8 /* CustomSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */; };
 		9AE4D8C72CC270E000EAC4D8 /* CityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C62CC270E000EAC4D8 /* CityCellView.swift */; };
 		9AE4D8C92CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C82CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift */; };
+		9AE4D8CB2CC54A8000EAC4D8 /* CityListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8CA2CC54A7700EAC4D8 /* CityListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitView.swift; sourceTree = "<group>"; };
 		9AE4D8C62CC270E000EAC4D8 /* CityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellView.swift; sourceTree = "<group>"; };
 		9AE4D8C82CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCitiesRepository.swift; sourceTree = "<group>"; };
+		9AE4D8CA2CC54A7700EAC4D8 /* CityListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		9ACA02432CC00BC1008F92F1 /* UalaChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				9AE4D8CA2CC54A7700EAC4D8 /* CityListViewModelTests.swift */,
 				9ACA02442CC00BC1008F92F1 /* UalaChallengeTests.swift */,
 			);
 			path = UalaChallengeTests;
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACA02452CC00BC1008F92F1 /* UalaChallengeTests.swift in Sources */,
+				9AE4D8CB2CC54A8000EAC4D8 /* CityListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,7 +571,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FW8H8GHAA2;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = DataAndAlg.UalaChallengeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,7 +591,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FW8H8GHAA2;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = DataAndAlg.UalaChallengeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
