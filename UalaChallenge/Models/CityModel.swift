@@ -17,8 +17,8 @@ public struct City: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
             case country
             case name
-            case id = "_id" // Mapea la propiedad _id a "id" en el JSON
-            case coord  // Mapea coord a "coordinates" en el JSON
+            case id = "_id" 
+            case coord
             case favorite
         }
 }
