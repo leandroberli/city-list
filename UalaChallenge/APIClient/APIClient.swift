@@ -17,7 +17,6 @@ final class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
-        request.cachePolicy = .returnCacheDataElseLoad
         endpoint.headers?.forEach { request.addValue($0.value, forHTTPHeaderField: $0.key) }
         // set up any other request parameters here
         print("CALLING API")

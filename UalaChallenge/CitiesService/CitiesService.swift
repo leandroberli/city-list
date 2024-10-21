@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 protocol CitiesServiceProtocol {
-    func getCities() -> AnyPublisher<[City], Error>
+    func fetchCities() -> AnyPublisher<[City], Error>
 }
 
 final class CitiesService: CitiesServiceProtocol {
     let apiClient = URLSessionAPIClient<CitiesEndpoint>()
     
-    func getCities() -> AnyPublisher<[City], any Error> {
+    func fetchCities() -> AnyPublisher<[City], any Error> {
         return apiClient.request(.getCities)
     }
 }

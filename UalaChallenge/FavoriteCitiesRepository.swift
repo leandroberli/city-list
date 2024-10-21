@@ -7,7 +7,12 @@
 
 import Foundation
 
-public struct FavoriteCitiesRepository {
+protocol FavoriteCitiesRepositoryProtocol {
+    func isFavorite(city: City) -> Bool
+    func setFavorite(city: City, isFavorite: Bool)
+}
+
+public struct FavoriteCitiesRepository: FavoriteCitiesRepositoryProtocol {
     let defaults = UserDefaults.standard
     
     public func isFavorite(city: City) -> Bool {

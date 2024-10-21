@@ -21,8 +21,6 @@
 		9AE4D8B82CC0219800EAC4D8 /* CitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8B72CC0219400EAC4D8 /* CitiesService.swift */; };
 		9AE4D8BC2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */; };
 		9AE4D8BE2CC17A1600EAC4D8 /* CityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8BD2CC17A0F00EAC4D8 /* CityDetailView.swift */; };
-		9AE4D8C02CC19A6E00EAC4D8 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8BF2CC19A6400EAC4D8 /* CityListView.swift */; };
-		9AE4D8C32CC2578800EAC4D8 /* CustomSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */; };
 		9AE4D8C72CC270E000EAC4D8 /* CityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C62CC270E000EAC4D8 /* CityCellView.swift */; };
 		9AE4D8C92CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C82CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift */; };
 		9AE4D8CB2CC54A8000EAC4D8 /* CityListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8CA2CC54A7700EAC4D8 /* CityListViewModelTests.swift */; };
@@ -63,8 +61,6 @@
 		9AE4D8B72CC0219400EAC4D8 /* CitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesService.swift; sourceTree = "<group>"; };
 		9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		9AE4D8BD2CC17A0F00EAC4D8 /* CityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailView.swift; sourceTree = "<group>"; };
-		9AE4D8BF2CC19A6400EAC4D8 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
-		9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitView.swift; sourceTree = "<group>"; };
 		9AE4D8C62CC270E000EAC4D8 /* CityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellView.swift; sourceTree = "<group>"; };
 		9AE4D8C82CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCitiesRepository.swift; sourceTree = "<group>"; };
 		9AE4D8CA2CC54A7700EAC4D8 /* CityListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModelTests.swift; sourceTree = "<group>"; };
@@ -136,7 +132,6 @@
 			children = (
 				9AE4D8C82CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift */,
 				9AE4D8C62CC270E000EAC4D8 /* CityCellView.swift */,
-				9AE4D8C22CC2578800EAC4D8 /* CustomSplitView.swift */,
 				9AE4D8C12CC19B5900EAC4D8 /* CityDetail */,
 				9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */,
 				9AE4D8B62CC0218400EAC4D8 /* CitiesService */,
@@ -144,7 +139,6 @@
 				9A211AC32CC01631009BFA4E /* Endpoint */,
 				9A211AC22CC015F8009BFA4E /* Models */,
 				9ACA02332CC00BBD008F92F1 /* UalaChallengeApp.swift */,
-				9AE4D8BF2CC19A6400EAC4D8 /* CityListView.swift */,
 				9A211AC02CC011D4009BFA4E /* CityListViewModel.swift */,
 				9ACA02352CC00BBD008F92F1 /* ContentView.swift */,
 				9ACA02372CC00BC1008F92F1 /* Assets.xcassets */,
@@ -334,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACA02362CC00BBD008F92F1 /* ContentView.swift in Sources */,
-				9AE4D8C02CC19A6E00EAC4D8 /* CityListView.swift in Sources */,
 				9AE4D8BE2CC17A1600EAC4D8 /* CityDetailView.swift in Sources */,
 				9ACA02342CC00BBD008F92F1 /* UalaChallengeApp.swift in Sources */,
 				9AE4D8BC2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift in Sources */,
@@ -342,7 +335,6 @@
 				9A211ABF2CC0112C009BFA4E /* CityModel.swift in Sources */,
 				9AE4D8C92CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift in Sources */,
 				9A211AC12CC011D4009BFA4E /* CityListViewModel.swift in Sources */,
-				9AE4D8C32CC2578800EAC4D8 /* CustomSplitView.swift in Sources */,
 				9A211AC52CC01642009BFA4E /* Endpoint.swift in Sources */,
 				9AE4D8B52CC0214B00EAC4D8 /* APIClient.swift in Sources */,
 				9AE4D8B82CC0219800EAC4D8 /* CitiesService.swift in Sources */,

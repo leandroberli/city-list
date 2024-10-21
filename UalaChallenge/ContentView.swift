@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @StateObject var viewModel = CityListViewModel(citiesService: CitiesService())
+    @StateObject var viewModel = CityListViewModel(citiesService: CitiesService(), favoriteCitiesRepository: FavoriteCitiesRepository())
     @State private var selectedCity: City?
     @State private var showDetails: Bool = false
     @State private var orientation = UIDeviceOrientation.unknown

@@ -16,7 +16,7 @@ public enum ListType: String, CaseIterable {
 public final class CityListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let citiesService: CitiesServiceProtocol
-    private var favoriteCitiesRepository: FavoriteCitiesRepository = FavoriteCitiesRepository()
+    private var favoriteCitiesRepository: FavoriteCitiesRepositoryProtocol
     private var apiAlreadyFetched: Bool = false
     @Published var cities: [City] = []
     
@@ -25,26 +25,33 @@ public final class CityListViewModel: ObservableObject {
     
     @Published var selectedListType: ListType = .all
     
-    init(citiesService: CitiesServiceProtocol) {
+    init(citiesService: CitiesServiceProtocol,
+         favoriteCitiesRepository: FavoriteCitiesRepositoryProtocol = FavoriteCitiesRepository()) {
         self.citiesService = citiesService
+        self.favoriteCitiesRepository = favoriteCitiesRepository
     }
     
     func fetchCities(completion: @escaping (() -> Void)) {
         guard !apiAlreadyFetched else { return }
         self.apiAlreadyFetched = true
         
-        citiesService.getCities()
+        citiesService.fetchCities()
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { data in
-                
-            }, receiveValue: {[weak self] data in
-                var cities: [City] = []
-                for item in data {
-                    cities.append(City(country: item.country, name: item.name, _id: item._id, coord: item.coord, favorite: self?.favoriteCitiesRepository.isFavorite(city: item)))
+            .sink(receiveCompletion: { result in
+                switch result {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("Error feching cities: \(error.localizedDescription)")
+                    self.apiAlreadyFetched = false
                 }
-                self?.cities = self?.sortCities(cities) ?? data
+            }, receiveValue: {[weak self] data in
+                guard let self = self else { return }
+                let cities = data.map { item in
+                    City(country: item.country, name: item.name, _id: item._id, coord: item.coord, favorite: self.favoriteCitiesRepository.isFavorite(city: item))
+                }
+                self.cities = self.sortCities(cities)
                 completion()
-                
             }).store(in: &cancellables)
     }
     
@@ -56,23 +63,18 @@ public final class CityListViewModel: ObservableObject {
     }
     
     func getCities() -> [City] {
-        if searchText.isEmpty {
-            if selectedListType == .all {
-                return cities
-            } else {
-                return cities.filter({ $0.favorite ?? false })
-            }
-        } else {
-            let cities = cities.filter {
-                let lowercased = $0.name.lowercased()
-                return lowercased.contains(searchText.lowercased())
-            }
-            if selectedListType == .all {
-                return cities
-            } else {
-                return cities.filter({ $0.favorite ?? false })
-            }
+        var filteredCities = cities
+        
+        if !searchText.isEmpty {
+            let lowercasedSearchText = searchText.lowercased()
+            filteredCities = filteredCities.filter { $0.name.lowercased().contains(lowercasedSearchText) }
         }
+        
+        if selectedListType != .all {
+            filteredCities = filteredCities.filter { $0.favorite ?? false }
+        }
+        
+        return filteredCities
     }
     
     private func sortCities(_ cities: [City]) -> [City] {

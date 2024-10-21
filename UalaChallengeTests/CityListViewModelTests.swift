@@ -12,7 +12,7 @@ import Combine
 final class MockCitiesService: CitiesServiceProtocol {
     var expectation: XCTestExpectation?
     
-    func getCities() -> AnyPublisher<[City], any Error> {
+    func fetchCities() -> AnyPublisher<[City], any Error> {
         let cities = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
                       City(country: "ES", name: "Madrid", _id: 2, coord: Coordinates(lon: 0, lat: 0)),
                       City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0)),
