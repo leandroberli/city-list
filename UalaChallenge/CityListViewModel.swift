@@ -56,7 +56,6 @@ public final class CityListViewModel: ObservableObject {
     }
     
     func getCities() -> [City] {
-        print(cities)
         if searchText.isEmpty {
             if selectedListType == .all {
                 return cities

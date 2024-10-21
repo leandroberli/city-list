@@ -126,6 +126,26 @@ final class CityListViewModelTests: XCTestCase {
         
         XCTAssertEqual(cities, result)
     }
+    
+    func testSearchCitiesWithSearchStringInvalid() throws {
+        let expectation = self.expectation(description: "Fetching cities")
+        
+        viewModel.fetchCities {
+            expectation.fulfill()
+        }
+        viewModel.searchText = "$%"
+        
+        waitForExpectations(timeout: 5) { error in
+            if error != nil {
+                XCTFail("Failed to fetch cities in time")
+            }
+        }
+        
+        let cities = self.viewModel.getCities()
+        let result: [City] = []
+        
+        XCTAssertEqual(cities, result)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
