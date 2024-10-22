@@ -16,10 +16,10 @@ public struct FavoriteCitiesRepository: FavoriteCitiesRepositoryProtocol {
     let defaults = UserDefaults.standard
     
     public func isFavorite(city: City) -> Bool {
-        defaults.bool(forKey: "\(city._id)")
+        defaults.bool(forKey: "\(city.id)")
     }
     
     public func setFavorite(city: City, isFavorite: Bool) {
-        defaults.set(isFavorite, forKey: "\(city._id)")
+        defaults.set(isFavorite, forKey: "\(city.id)")
     }
 }

@@ -13,10 +13,10 @@ final class MockCitiesService: CitiesServiceProtocol {
     var expectation: XCTestExpectation?
     
     func fetchCities() -> AnyPublisher<[City], any Error> {
-        let cities = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
-                      City(country: "ES", name: "Madrid", _id: 2, coord: Coordinates(lon: 0, lat: 0)),
-                      City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0)),
-                      City(country: "BR", name: "Rio de Janeiro", _id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false)]
+        let cities = [City(country: "ES", name: "Barcelona", id: 1, coord: Coordinates(lon: 0, lat: 0)),
+                      City(country: "ES", name: "Madrid", id: 2, coord: Coordinates(lon: 0, lat: 0)),
+                      City(country: "AR", name: "Buenos Aires", id: 3, coord: Coordinates(lon: 0, lat: 0)),
+                      City(country: "BR", name: "Rio de Janeiro", id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false)]
         return Just(cities)
                 .setFailureType(to: Error.self) // Specify the failure type for compatibility
                 .eraseToAnyPublisher()
@@ -55,10 +55,10 @@ final class CityListViewModelTests: XCTestCase {
         
         let cities = self.viewModel.getCities()
         
-        let expectedResult = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
-                              City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0)),
-                              City(country: "ES", name: "Madrid", _id: 2, coord: Coordinates(lon: 0, lat: 0)),
-                              City(country: "BR", name: "Rio de Janeiro", _id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false)]
+        let expectedResult = [City(country: "ES", name: "Barcelona", id: 1, coord: Coordinates(lon: 0, lat: 0)),
+                              City(country: "AR", name: "Buenos Aires", id: 3, coord: Coordinates(lon: 0, lat: 0)),
+                              City(country: "ES", name: "Madrid", id: 2, coord: Coordinates(lon: 0, lat: 0)),
+                              City(country: "BR", name: "Rio de Janeiro", id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false)]
         
         XCTAssertEqual(cities, expectedResult)
     }
@@ -77,10 +77,10 @@ final class CityListViewModelTests: XCTestCase {
         }
         
         let cities = self.viewModel.getCities()
-        let wrongResult = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
-                           City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0)),
-                           City(country: "BR", name: "Rio de Janeiro", _id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false),
-                           City(country: "ES", name: "Madrid", _id: 2, coord: Coordinates(lon: 0, lat: 0))]
+        let wrongResult = [City(country: "ES", name: "Barcelona", id: 1, coord: Coordinates(lon: 0, lat: 0)),
+                           City(country: "AR", name: "Buenos Aires", id: 3, coord: Coordinates(lon: 0, lat: 0)),
+                           City(country: "BR", name: "Rio de Janeiro", id: 4, coord: Coordinates(lon: 0, lat: 0), favorite: false),
+                           City(country: "ES", name: "Madrid", id: 2, coord: Coordinates(lon: 0, lat: 0))]
         
         XCTAssertNotEqual(cities, wrongResult)
     }
@@ -101,8 +101,8 @@ final class CityListViewModelTests: XCTestCase {
         }
         
         let cities = self.viewModel.getCities()
-        let result = [City(country: "ES", name: "Barcelona", _id: 1, coord: Coordinates(lon: 0, lat: 0)),
-                           City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0))]
+        let result = [City(country: "ES", name: "Barcelona", id: 1, coord: Coordinates(lon: 0, lat: 0)),
+                           City(country: "AR", name: "Buenos Aires", id: 3, coord: Coordinates(lon: 0, lat: 0))]
         
         XCTAssertEqual(cities, result)
     }
@@ -122,7 +122,7 @@ final class CityListViewModelTests: XCTestCase {
         }
         
         let cities = self.viewModel.getCities()
-        let result: [City] = [City(country: "AR", name: "Buenos Aires", _id: 3, coord: Coordinates(lon: 0, lat: 0))]
+        let result: [City] = [City(country: "AR", name: "Buenos Aires", id: 3, coord: Coordinates(lon: 0, lat: 0))]
         
         XCTAssertEqual(cities, result)
     }
