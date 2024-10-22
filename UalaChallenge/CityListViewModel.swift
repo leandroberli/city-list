@@ -19,6 +19,7 @@ public final class CityListViewModel: ObservableObject {
     private var favoriteCitiesRepository: FavoriteCitiesRepositoryProtocol
     private var apiAlreadyFetched: Bool = false
     @Published var cities: [City] = []
+    @Published var filteredCities: [City] = []
     @Published var searchText: String = ""
     @Published var searchIsActive = false
     @Published var selectedListType: ListType = .all
@@ -49,6 +50,7 @@ public final class CityListViewModel: ObservableObject {
                     City(country: item.country, name: item.name, _id: item._id, coord: item.coord, favorite: self.favoriteCitiesRepository.isFavorite(city: item))
                 }
                 self.cities = self.sortCities(cities)
+                self.filteredCities = self.cities
                 completion()
             }).store(in: &cancellables)
     }
@@ -58,6 +60,27 @@ public final class CityListViewModel: ObservableObject {
             cities[index].favorite = !favoriteCitiesRepository.isFavorite(city: city)
             favoriteCitiesRepository.setFavorite(city: city, isFavorite: !favoriteCitiesRepository.isFavorite(city: city))
         }
+    }
+    
+    public func setupCityFiltering() {
+        Publishers.CombineLatest3($cities, $searchText.debounce(for: 0.5, scheduler: RunLoop.main), $selectedListType)
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
+            .map { cities, searchText, selectedListType in
+                var filteredCities = cities
+                
+                if !searchText.isEmpty {
+                    let lowercasedSearchText = searchText.lowercased()
+                    filteredCities = filteredCities.filter { $0.name.lowercased().contains(lowercasedSearchText) }
+                }
+                
+                if selectedListType != .all {
+                    filteredCities = filteredCities.filter { $0.favorite ?? false }
+                }
+                
+                return filteredCities
+            }
+            .receive(on: RunLoop.main)
+            .assign(to: &$filteredCities)
     }
     
     //TODO: Try to improve this operations using concurrency GCD

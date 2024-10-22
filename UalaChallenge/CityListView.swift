@@ -27,7 +27,7 @@ struct CityListView: View {
                     .padding(.leading)
                     .padding(.trailing)
                     LazyVStack(alignment: .leading, spacing: 8) {
-                        ForEach(viewModel.getCities()) { city in
+                        ForEach(viewModel.filteredCities) { city in
                             CityCellView(city: city, favoriteAction: {
                                 viewModel.setFavoriteCity(city)
                             }, didSelectAction: {
@@ -45,6 +45,7 @@ struct CityListView: View {
                 }
                 .navigationTitle("Cities")
                 .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive)
+                .onChange(of: viewModel.searchText, { viewModel.setupCityFiltering() })
             }
             .frame(maxWidth: orientation.isLandscape ? UIScreen.main.bounds.size.width/3 : .infinity)
             if orientation.isLandscape {
