@@ -62,17 +62,19 @@ public final class CityListViewModel: ObservableObject {
     
     //TODO: Try to improve this operations using concurrency GCD
     func getCities() -> [City] {
+        print(#function)
+        let date = Date()
         var filteredCities = cities
         
         if !searchText.isEmpty {
             let lowercasedSearchText = searchText.lowercased()
-            filteredCities = filteredCities.filter { $0.name.lowercased().contains(lowercasedSearchText) }
+            filteredCities = filteredCities.filter { $0.name.lowercased().hasPrefix(lowercasedSearchText) }
         }
         
         if selectedListType != .all {
             filteredCities = filteredCities.filter { $0.favorite ?? false }
         }
-        
+        print("t: ", Date().timeIntervalSince1970 - date.timeIntervalSince1970 )
         return filteredCities
     }
     
