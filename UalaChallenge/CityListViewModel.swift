@@ -17,6 +17,7 @@ public final class CityListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let citiesService: CitiesServiceProtocol
     private var apiAlreadyFetched: Bool = false
+    private var allCities: [CityCellModel] = []
     @Published var cities: [CityCellModel] = []
     @Published var searchText: String = ""
     @Published var searchIsActive = false
@@ -24,6 +25,43 @@ public final class CityListViewModel: ObservableObject {
     
     init(citiesService: CitiesServiceProtocol) {
         self.citiesService = citiesService
+        bindSearchText()
+    }
+    
+    private func bindSearchText() {
+        $searchText
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
+            .map({ _ in
+                return self.filterCities(self.allCities)
+            })
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { cities in
+                self.cities = cities
+            })
+            .store(in: &cancellables)
+        
+        $selectedListType
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
+            .map({ _ in
+                return self.filterCities(self.allCities)
+            })
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { cities in
+                self.cities = cities
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func filterCities(_ cities: [CityCellModel]) -> [CityCellModel] {
+        var filteredCities = cities
+        if !self.searchText.isEmpty {
+            let lowercasedSearchText = self.searchText.lowercased()
+            filteredCities = filteredCities.filter { $0.lowercasedName.hasPrefix(lowercasedSearchText) }
+        }
+        if self.selectedListType != .all {
+            filteredCities = filteredCities.filter { $0.isFavorite }
+        }
+        return filteredCities
     }
     
     func fetchCities(completion: @escaping (() -> Void)) {
@@ -49,6 +87,7 @@ public final class CityListViewModel: ObservableObject {
                 }
             }, receiveValue: {[weak self] data in
                 guard let self = self else { return }
+                self.allCities = data
                 self.cities = data
                 completion()
             }).store(in: &cancellables)

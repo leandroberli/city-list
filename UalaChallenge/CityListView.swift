@@ -27,7 +27,7 @@ struct CityListView: View {
                     .padding(.leading)
                     .padding(.trailing)
                     LazyVStack(alignment: .leading, spacing: 8) {
-                        ForEach(viewModel.getCities()) { model in
+                        ForEach(viewModel.cities) { model in
                             CityCellView(model: model, favoriteAction: {
                                 viewModel.setFavoriteCity(model.city)
                             }, didSelectAction: {
