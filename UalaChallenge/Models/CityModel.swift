@@ -7,6 +7,28 @@
 
 import Foundation
 
+public struct CityCellModel {
+    var city: City
+    var isFavorite: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: "\(city.id)")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "\(city.id)")
+        }
+    }
+    var lowercasedName: String
+    
+    public init(city: City) {
+        self.city = city
+        self.lowercasedName = city.name.lowercased()
+    }
+}
+
+extension CityCellModel: Identifiable {
+    public var id: Int { city.id }
+}
+
 public struct City: Codable, Identifiable {
     let country: String
     let name: String
