@@ -59,6 +59,7 @@
 		9ACA024A2CC00BC1008F92F1 /* UalaChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UalaChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACA024E2CC00BC1008F92F1 /* UalaChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UalaChallengeUITests.swift; sourceTree = "<group>"; };
 		9ACA02502CC00BC1008F92F1 /* UalaChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UalaChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9ADEB30F2CF657B000D56F82 /* UalaChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UalaChallenge.xctestplan; sourceTree = "<group>"; };
 		9AE4D8B42CC0214800EAC4D8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9AE4D8B72CC0219400EAC4D8 /* CitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesService.swift; sourceTree = "<group>"; };
 		9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 		9ACA02272CC00BBD008F92F1 = {
 			isa = PBXGroup;
 			children = (
+				9ADEB30F2CF657B000D56F82 /* UalaChallenge.xctestplan */,
 				9AE4D8D22CC6A61900EAC4D8 /* README.md */,
 				9ACA02322CC00BBD008F92F1 /* UalaChallenge */,
 				9ACA02432CC00BC1008F92F1 /* UalaChallengeTests */,

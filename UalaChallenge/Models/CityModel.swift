@@ -29,6 +29,12 @@ extension CityCellModel: Identifiable {
     public var id: Int { city.id }
 }
 
+extension CityCellModel: Hashable {
+    public static func == (lhs: CityCellModel, rhs: CityCellModel) -> Bool {
+        lhs.city.id == rhs.city.id
+    }
+}
+
 public struct City: Codable, Identifiable {
     let country: String
     let name: String

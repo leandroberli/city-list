@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "762CE89A-E1B8-46E8-A87E-C6AE8A7D3833",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:UalaChallenge.xcodeproj",
+      "identifier" : "9ACA022F2CC00BBD008F92F1",
+      "name" : "UalaChallenge"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:UalaChallenge.xcodeproj",
+        "identifier" : "9ACA023F2CC00BC1008F92F1",
+        "name" : "UalaChallengeTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:UalaChallenge.xcodeproj",
+        "identifier" : "9ACA02492CC00BC1008F92F1",
+        "name" : "UalaChallengeUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
