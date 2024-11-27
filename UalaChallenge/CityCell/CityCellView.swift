@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CityCellView: View {
-    var city: City
+    var model: CityCellModel
     var favoriteAction: () -> Void
     var didSelectAction: () -> Void
     
@@ -18,14 +18,14 @@ struct CityCellView: View {
         }, label: {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(city.name + ", " + city.country).font(.system(size: 16, weight: .regular))
-                    Text("\(city.coord.lat)" + ", " + "\(city.coord.lon)").font(.system(size: 12, weight: .light))
+                    Text(model.city.name + ", " + model.city.country).font(.system(size: 16, weight: .regular))
+                    Text("\(model.city.coord.lat)" + ", " + "\(model.city.coord.lon)").font(.system(size: 12, weight: .light))
                 }
                 Spacer()
                 Button(action: {
                     favoriteAction()
                 }, label: {
-                    city.favorite ?? false ? Image(systemName: "heart.fill").tint(.red) : Image(systemName: "heart").tint(.red)
+                    model.isFavorite ?? false ? Image(systemName: "heart.fill").tint(.red) : Image(systemName: "heart").tint(.red)
                 })
                 .buttonStyle(.plain)
             }

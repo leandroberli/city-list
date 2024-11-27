@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct CityListView: View {
-    @StateObject var viewModel = CityListViewModel(citiesService: CitiesService(), favoriteCitiesRepository: FavoriteCitiesRepository())
+    @StateObject var viewModel = CityListViewModel(citiesService: CitiesService())
     @State private var selectedCity: City?
     @State private var showDetails: Bool = false
     @State private var orientation = UIDeviceOrientation.unknown
@@ -27,11 +27,11 @@ struct CityListView: View {
                     .padding(.leading)
                     .padding(.trailing)
                     LazyVStack(alignment: .leading, spacing: 8) {
-                        ForEach(viewModel.getCities()) { city in
-                            CityCellView(city: city, favoriteAction: {
-                                viewModel.setFavoriteCity(city)
+                        ForEach(viewModel.cities) { model in
+                            CityCellView(model: model, favoriteAction: {
+                                viewModel.setFavoriteCity(model.city)
                             }, didSelectAction: {
-                                selectedCity = city
+                                selectedCity = model.city
                                 showDetails = orientation.isLandscape ? false : true
                             })
                         }

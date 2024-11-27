@@ -25,7 +25,6 @@
 		9AE4D8C92CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8C82CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift */; };
 		9AE4D8CB2CC54A8000EAC4D8 /* CityListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8CA2CC54A7700EAC4D8 /* CityListViewModelTests.swift */; };
 		9AE4D8CF2CC6801D00EAC4D8 /* CityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D8CE2CC6801D00EAC4D8 /* CityDetailViewModel.swift */; };
-		9AE4D8D12CC6A5F400EAC4D8 /* Mobile Challenge - v0.5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 9AE4D8D02CC6A5F400EAC4D8 /* Mobile Challenge - v0.5.pdf */; };
 		9AE4D8D32CC6A61E00EAC4D8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9AE4D8D22CC6A61900EAC4D8 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +59,7 @@
 		9ACA024A2CC00BC1008F92F1 /* UalaChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UalaChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACA024E2CC00BC1008F92F1 /* UalaChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UalaChallengeUITests.swift; sourceTree = "<group>"; };
 		9ACA02502CC00BC1008F92F1 /* UalaChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UalaChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9ADEB30F2CF657B000D56F82 /* UalaChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UalaChallenge.xctestplan; sourceTree = "<group>"; };
 		9AE4D8B42CC0214800EAC4D8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9AE4D8B72CC0219400EAC4D8 /* CitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesService.swift; sourceTree = "<group>"; };
 		9AE4D8BB2CC0390300EAC4D8 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
@@ -68,7 +68,6 @@
 		9AE4D8C82CC2C07700EAC4D8 /* FavoriteCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCitiesRepository.swift; sourceTree = "<group>"; };
 		9AE4D8CA2CC54A7700EAC4D8 /* CityListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModelTests.swift; sourceTree = "<group>"; };
 		9AE4D8CE2CC6801D00EAC4D8 /* CityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailViewModel.swift; sourceTree = "<group>"; };
-		9AE4D8D02CC6A5F400EAC4D8 /* Mobile Challenge - v0.5.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Mobile Challenge - v0.5.pdf"; sourceTree = "<group>"; };
 		9AE4D8D22CC6A61900EAC4D8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,8 +115,8 @@
 		9ACA02272CC00BBD008F92F1 = {
 			isa = PBXGroup;
 			children = (
+				9ADEB30F2CF657B000D56F82 /* UalaChallenge.xctestplan */,
 				9AE4D8D22CC6A61900EAC4D8 /* README.md */,
-				9AE4D8D02CC6A5F400EAC4D8 /* Mobile Challenge - v0.5.pdf */,
 				9ACA02322CC00BBD008F92F1 /* UalaChallenge */,
 				9ACA02432CC00BC1008F92F1 /* UalaChallengeTests */,
 				9ACA024D2CC00BC1008F92F1 /* UalaChallengeUITests */,
@@ -329,7 +328,6 @@
 				9ACA023B2CC00BC1008F92F1 /* Preview Assets.xcassets in Resources */,
 				9ACA02382CC00BC1008F92F1 /* Assets.xcassets in Resources */,
 				9AE4D8D32CC6A61E00EAC4D8 /* README.md in Resources */,
-				9AE4D8D12CC6A5F400EAC4D8 /* Mobile Challenge - v0.5.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

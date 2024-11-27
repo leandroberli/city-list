@@ -16,17 +16,52 @@ public enum ListType: String, CaseIterable {
 public final class CityListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let citiesService: CitiesServiceProtocol
-    private var favoriteCitiesRepository: FavoriteCitiesRepositoryProtocol
     private var apiAlreadyFetched: Bool = false
-    @Published var cities: [City] = []
+    private var allCities: [CityCellModel] = []
+    @Published var cities: [CityCellModel] = []
     @Published var searchText: String = ""
     @Published var searchIsActive = false
     @Published var selectedListType: ListType = .all
     
-    init(citiesService: CitiesServiceProtocol,
-         favoriteCitiesRepository: FavoriteCitiesRepositoryProtocol = FavoriteCitiesRepository()) {
+    init(citiesService: CitiesServiceProtocol) {
         self.citiesService = citiesService
-        self.favoriteCitiesRepository = favoriteCitiesRepository
+        bindSearchText()
+    }
+    
+    private func bindSearchText() {
+        $searchText
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
+            .map({ _ in
+                return self.filterCities(self.allCities)
+            })
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { cities in
+                self.cities = cities
+            })
+            .store(in: &cancellables)
+        
+        $selectedListType
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
+            .map({ _ in
+                return self.filterCities(self.allCities)
+            })
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { cities in
+                self.cities = cities
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func filterCities(_ cities: [CityCellModel]) -> [CityCellModel] {
+        var filteredCities = cities
+        if !self.searchText.isEmpty {
+            let lowercasedSearchText = self.searchText.lowercased()
+            filteredCities = filteredCities.filter { $0.lowercasedName.hasPrefix(lowercasedSearchText) }
+        }
+        if self.selectedListType != .all {
+            filteredCities = filteredCities.filter { $0.isFavorite }
+        }
+        return filteredCities
     }
     
     func fetchCities(completion: @escaping (() -> Void)) {
@@ -34,6 +69,13 @@ public final class CityListViewModel: ObservableObject {
         self.apiAlreadyFetched = true
         
         citiesService.fetchCities()
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
+            .map { data in
+                let cities = data.map { item in
+                    CityCellModel(city: item)
+                }
+                return self.sortCities(cities)
+            }
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { result in
                 switch result {
@@ -45,40 +87,38 @@ public final class CityListViewModel: ObservableObject {
                 }
             }, receiveValue: {[weak self] data in
                 guard let self = self else { return }
-                let cities = data.map { item in
-                    City(country: item.country, name: item.name, id: item.id, coord: item.coord, favorite: self.favoriteCitiesRepository.isFavorite(city: item))
-                }
-                self.cities = self.sortCities(cities)
+                self.allCities = data
+                self.cities = data
                 completion()
             }).store(in: &cancellables)
     }
     
     func setFavoriteCity(_ city: City) {
-        if let index = cities.firstIndex(where: { $0.id == city.id }) {
-            cities[index].favorite = !favoriteCitiesRepository.isFavorite(city: city)
-            favoriteCitiesRepository.setFavorite(city: city, isFavorite: !favoriteCitiesRepository.isFavorite(city: city))
+        guard let index = cities.firstIndex(where: { $0.city.id == city.id }) else {
+            return
         }
+        cities[index].isFavorite = !cities[index].isFavorite
     }
     
     //TODO: Try to improve this operations using concurrency GCD
-    func getCities() -> [City] {
+    func getCities() -> [CityCellModel] {
         print(#function)
         let date = Date()
         var filteredCities = cities
         
         if !searchText.isEmpty {
             let lowercasedSearchText = searchText.lowercased()
-            filteredCities = filteredCities.filter { $0.name.lowercased().hasPrefix(lowercasedSearchText) }
+            filteredCities = filteredCities.filter { $0.lowercasedName.hasPrefix(lowercasedSearchText) }
         }
         
         if selectedListType != .all {
-            filteredCities = filteredCities.filter { $0.favorite ?? false }
+            filteredCities = filteredCities.filter { $0.isFavorite }
         }
         print("t: ", Date().timeIntervalSince1970 - date.timeIntervalSince1970 )
         return filteredCities
     }
     
-    private func sortCities(_ cities: [City]) -> [City] {
-        return cities.sorted(by: { $0.name < $1.name })
+    private func sortCities(_ cities: [CityCellModel]) -> [CityCellModel] {
+        return cities.sorted(by: { $0.lowercasedName < $1.lowercasedName })
     }
 }
